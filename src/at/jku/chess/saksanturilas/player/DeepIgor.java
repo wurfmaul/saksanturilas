@@ -1,18 +1,17 @@
-package chess.player;
+package at.jku.chess.saksanturilas.player;
 
-import static chess.ChessUtil.canBeConsideredEqual;
+import static at.jku.chess.saksanturilas.board.ChessUtil.canBeConsideredEqual;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import app.Game;
-
-import chess.Board;
-import chess.ChessUtil;
-import chess.Figure;
-import chess.move.Move;
-import chess.ui.GameUI;
+import at.jku.chess.saksanturilas.Game;
+import at.jku.chess.saksanturilas.board.Board;
+import at.jku.chess.saksanturilas.board.ChessUtil;
+import at.jku.chess.saksanturilas.board.Figure;
+import at.jku.chess.saksanturilas.move.Move;
+import at.jku.chess.saksanturilas.ui.GameUI;
 
 public class DeepIgor extends AbstractPlayer {
 

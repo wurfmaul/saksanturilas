@@ -1,7 +1,7 @@
-package app;
+package at.jku.chess.saksanturilas;
 
-import chess.ui.SwingUI;
-import chess.ui.TextUI;
+import at.jku.chess.saksanturilas.ui.SwingUI;
+import at.jku.chess.saksanturilas.ui.TextUI;
 
 /**
  * Class to start the game. Only contains the <tt>static void main</tt> method

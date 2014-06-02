@@ -1,17 +1,17 @@
-package chess;
+package at.jku.chess.saksanturilas.board;
 
-import static chess.ChessUtil.*;
-import static chess.Figure.*;
+import static at.jku.chess.saksanturilas.board.ChessUtil.*;
+import static at.jku.chess.saksanturilas.board.Figure.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
-import chess.move.HundredPlyRemisMove;
-import chess.move.Move;
-import chess.move.RemisMove;
-import chess.move.ThreeEqualBoardsRemisMove;
+import at.jku.chess.saksanturilas.move.HundredPlyRemisMove;
+import at.jku.chess.saksanturilas.move.Move;
+import at.jku.chess.saksanturilas.move.RemisMove;
+import at.jku.chess.saksanturilas.move.ThreeEqualBoardsRemisMove;
 
 /**
  * Represents a board and it's current state of figures and possibilities

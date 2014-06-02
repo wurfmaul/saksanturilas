@@ -1,10 +1,10 @@
-package chess.player;
+package at.jku.chess.saksanturilas.player;
 
 import java.util.Random;
 
-import chess.Board;
-import chess.move.Move;
-import chess.ui.GameUI;
+import at.jku.chess.saksanturilas.board.Board;
+import at.jku.chess.saksanturilas.move.Move;
+import at.jku.chess.saksanturilas.ui.GameUI;
 
 /**
  * Implements a human player.

@@ -1,4 +1,4 @@
-package chess.ui;
+package at.jku.chess.saksanturilas.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -20,10 +20,10 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 
-import chess.Board;
-import chess.BoardListener;
-import chess.Figure;
-import chess.move.Move;
+import at.jku.chess.saksanturilas.board.Board;
+import at.jku.chess.saksanturilas.board.BoardListener;
+import at.jku.chess.saksanturilas.board.Figure;
+import at.jku.chess.saksanturilas.move.Move;
 
 /**
  * The panel that really paints the Swing board and handles the interaction

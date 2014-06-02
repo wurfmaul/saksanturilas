@@ -1,4 +1,4 @@
-package chess.move;
+package at.jku.chess.saksanturilas.move;
 
 public class HundredPlyRemisMove extends UnrejectableRemisMove {
 	@Override

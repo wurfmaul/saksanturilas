@@ -1,6 +1,6 @@
-package chess;
+package at.jku.chess.saksanturilas.board;
 
-import static chess.Figure.*;
+import static at.jku.chess.saksanturilas.board.Figure.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
-import chess.move.Move;
+import at.jku.chess.saksanturilas.move.Move;
 
 public class ChessUtil {
 	/** Possible values for <tt>result</tt>. */

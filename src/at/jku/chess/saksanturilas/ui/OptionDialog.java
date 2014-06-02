@@ -1,4 +1,4 @@
-package chess.ui;
+package at.jku.chess.saksanturilas.ui;
 
 import javax.swing.JOptionPane;
 

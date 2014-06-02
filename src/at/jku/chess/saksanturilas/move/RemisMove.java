@@ -1,6 +1,6 @@
-package chess.move;
+package at.jku.chess.saksanturilas.move;
 
-import chess.Board;
+import at.jku.chess.saksanturilas.board.Board;
 
 /**
  *  Dummy class which implements a move in which remis is proclaimed

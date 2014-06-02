@@ -1,9 +1,9 @@
-package chess.move;
+package at.jku.chess.saksanturilas.move;
 
-import static chess.Figure.*;
-import static chess.ChessUtil.getCoordName;
-import chess.Board;
-import chess.Figure;
+import static at.jku.chess.saksanturilas.board.ChessUtil.getCoordName;
+import static at.jku.chess.saksanturilas.board.Figure.*;
+import at.jku.chess.saksanturilas.board.Board;
+import at.jku.chess.saksanturilas.board.Figure;
 
 /**
  * Represents one single ply.

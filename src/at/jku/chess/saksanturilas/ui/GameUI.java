@@ -1,4 +1,4 @@
-package chess.ui;
+package at.jku.chess.saksanturilas.ui;
 
 //import java.io.File;
 //import java.lang.reflect.InvocationTargetException;
@@ -8,15 +8,15 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
-import chess.Board;
-import chess.ChessException;
-import chess.ChessUtil;
-import chess.Figure;
-import chess.move.Move;
-import chess.player.AbstractPlayer;
-import chess.player.DeepIgor;
-import chess.player.HumanPlayer;
-import chess.player.RandomPlayer;
+import at.jku.chess.saksanturilas.board.Board;
+import at.jku.chess.saksanturilas.board.ChessException;
+import at.jku.chess.saksanturilas.board.ChessUtil;
+import at.jku.chess.saksanturilas.board.Figure;
+import at.jku.chess.saksanturilas.move.Move;
+import at.jku.chess.saksanturilas.player.AbstractPlayer;
+import at.jku.chess.saksanturilas.player.DeepIgor;
+import at.jku.chess.saksanturilas.player.HumanPlayer;
+import at.jku.chess.saksanturilas.player.RandomPlayer;
 
 /**
  * Specifies the user interface for interaction with players.

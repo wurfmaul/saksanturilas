@@ -1,4 +1,4 @@
-package chess;
+package at.jku.chess.saksanturilas.board;
 
 import java.util.Hashtable;
 import java.util.Map.Entry;

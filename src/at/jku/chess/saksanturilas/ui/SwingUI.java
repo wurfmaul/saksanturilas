@@ -1,4 +1,4 @@
-package chess.ui;
+package at.jku.chess.saksanturilas.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -41,12 +41,12 @@ import javax.swing.border.LineBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import chess.Board;
-import chess.ChessException;
-import chess.ChessUtil;
-import chess.Figure;
-import chess.move.Move;
-import chess.player.AbstractPlayer;
+import at.jku.chess.saksanturilas.board.Board;
+import at.jku.chess.saksanturilas.board.ChessException;
+import at.jku.chess.saksanturilas.board.ChessUtil;
+import at.jku.chess.saksanturilas.board.Figure;
+import at.jku.chess.saksanturilas.move.Move;
+import at.jku.chess.saksanturilas.player.AbstractPlayer;
 
 /**
  * Implements the <tt>GameUI</tt> for graphical interaction (using Swing) with

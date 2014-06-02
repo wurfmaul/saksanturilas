@@ -1,12 +1,12 @@
-package chess.player;
+package at.jku.chess.saksanturilas.player;
 
 import java.util.List;
 import java.util.Random;
 
-import chess.Board;
-import chess.ChessUtil;
-import chess.move.Move;
-import chess.ui.GameUI;
+import at.jku.chess.saksanturilas.board.Board;
+import at.jku.chess.saksanturilas.board.ChessUtil;
+import at.jku.chess.saksanturilas.move.Move;
+import at.jku.chess.saksanturilas.ui.GameUI;
 
 /**
  * Class represents a player who plays on a random basis.

@@ -1,4 +1,4 @@
-package app;
+package at.jku.chess.saksanturilas;
 
 import java.util.Random;
 
@@ -7,9 +7,9 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import chess.Board;
-import chess.ChessUtil;
-import chess.Figure;
+import at.jku.chess.saksanturilas.board.Board;
+import at.jku.chess.saksanturilas.board.ChessUtil;
+import at.jku.chess.saksanturilas.board.Figure;
 
 public class TimeTest {
 	private static final int TURNS = 5000;
