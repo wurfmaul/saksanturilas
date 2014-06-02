@@ -1,5 +1,19 @@
 package at.jku.chess.saksanturilas.ui;
 
+import static at.jku.chess.saksanturilas.ui.ResourceManager.BLACK_BISHOP;
+import static at.jku.chess.saksanturilas.ui.ResourceManager.BLACK_KING;
+import static at.jku.chess.saksanturilas.ui.ResourceManager.BLACK_KNIGHT;
+import static at.jku.chess.saksanturilas.ui.ResourceManager.BLACK_PAWN;
+import static at.jku.chess.saksanturilas.ui.ResourceManager.BLACK_QUEEN;
+import static at.jku.chess.saksanturilas.ui.ResourceManager.BLACK_ROOK;
+import static at.jku.chess.saksanturilas.ui.ResourceManager.WHITE_BISHOP;
+import static at.jku.chess.saksanturilas.ui.ResourceManager.WHITE_KING;
+import static at.jku.chess.saksanturilas.ui.ResourceManager.WHITE_KNIGHT;
+import static at.jku.chess.saksanturilas.ui.ResourceManager.WHITE_PAWN;
+import static at.jku.chess.saksanturilas.ui.ResourceManager.WHITE_QUEEN;
+import static at.jku.chess.saksanturilas.ui.ResourceManager.WHITE_ROOK;
+import static at.jku.chess.saksanturilas.ui.ResourceManager.getImage;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -12,12 +26,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 
 import at.jku.chess.saksanturilas.board.Board;
@@ -68,34 +79,7 @@ public class ChessPanel extends JComponent {
 
 	/** the standard size of the rulers */
 	public int rulerSize;
-
 	private int fontSize;
-
-	// all the fancy images that represent our pieces on the board
-	private static final NormalImage WHITE_PAWN = new NormalImage(
-			SwingUI.IMGDIR + "w_Pawn.png");
-	private static final NormalImage WHITE_ROOK = new NormalImage(
-			SwingUI.IMGDIR + "w_Rook.png");
-	private static final NormalImage WHITE_KNIGHT = new NormalImage(
-			SwingUI.IMGDIR + "w_Knight.png");
-	private static final NormalImage WHITE_BISHOP = new NormalImage(
-			SwingUI.IMGDIR + "w_Bishop.png");
-	private static final NormalImage WHITE_QUEEN = new NormalImage(
-			SwingUI.IMGDIR + "w_Queen.png");
-	private static final NormalImage WHITE_KING = new NormalImage(
-			SwingUI.IMGDIR + "w_King.png");
-	private static final NormalImage BLACK_PAWN = new NormalImage(
-			SwingUI.IMGDIR + "b_Pawn.png");
-	private static final NormalImage BLACK_ROOK = new NormalImage(
-			SwingUI.IMGDIR + "b_Rook.png");
-	private static final NormalImage BLACK_KNIGHT = new NormalImage(
-			SwingUI.IMGDIR + "b_Knight.png");
-	private static final NormalImage BLACK_BISHOP = new NormalImage(
-			SwingUI.IMGDIR + "b_Bishop.png");
-	private static final NormalImage BLACK_QUEEN = new NormalImage(
-			SwingUI.IMGDIR + "b_Queen.png");
-	private static final NormalImage BLACK_KING = new NormalImage(
-			SwingUI.IMGDIR + "b_King.png");
 
 	public ChessPanel(Board board, SwingUI parentFrame) {
 		this.board = board;
@@ -290,29 +274,29 @@ public class ChessPanel extends JComponent {
 	private NormalImage getFigure(byte figure) {
 		switch (figure) {
 		case Figure.WHITE_PAWN:
-			return WHITE_PAWN;
+			return new NormalImage(getImage(WHITE_PAWN));
 		case Figure.WHITE_ROOK:
-			return WHITE_ROOK;
+			return new NormalImage(getImage(WHITE_ROOK));
 		case Figure.WHITE_KNIGHT:
-			return WHITE_KNIGHT;
+			return new NormalImage(getImage(WHITE_KNIGHT));
 		case Figure.WHITE_BISHOP:
-			return WHITE_BISHOP;
+			return new NormalImage(getImage(WHITE_BISHOP));
 		case Figure.WHITE_QUEEN:
-			return WHITE_QUEEN;
+			return new NormalImage(getImage(WHITE_QUEEN));
 		case Figure.WHITE_KING:
-			return WHITE_KING;
+			return new NormalImage(getImage(WHITE_KING));
 		case Figure.BLACK_PAWN:
-			return BLACK_PAWN;
+			return new NormalImage(getImage(BLACK_PAWN));
 		case Figure.BLACK_ROOK:
-			return BLACK_ROOK;
+			return new NormalImage(getImage(BLACK_ROOK));
 		case Figure.BLACK_KNIGHT:
-			return BLACK_KNIGHT;
+			return new NormalImage(getImage(BLACK_KNIGHT));
 		case Figure.BLACK_BISHOP:
-			return BLACK_BISHOP;
+			return new NormalImage(getImage(BLACK_BISHOP));
 		case Figure.BLACK_QUEEN:
-			return BLACK_QUEEN;
+			return new NormalImage(getImage(BLACK_QUEEN));
 		case Figure.BLACK_KING:
-			return BLACK_KING;
+			return new NormalImage(getImage(BLACK_KING));
 		}
 		return null;
 	}
@@ -321,28 +305,10 @@ public class ChessPanel extends JComponent {
 	 * Implements a buffered image with automatic file-loading.
 	 */
 	public static class NormalImage {
-		private BufferedImage bufferedImage; // Image itself
-		private File imageFile; // File for image
-		private static AffineTransform transformer; // Usually used as an
-													// identity matrix
+		private BufferedImage image;
 
-		/**
-		 * Creates a new image for you from the filename string given.
-		 * 
-		 * @param fileName
-		 *            The file name for the image.
-		 */
-		public NormalImage(String fileName) {
-			// Create file
-			imageFile = new File(fileName);
-			try {
-				// Read the file...
-				bufferedImage = ImageIO.read(imageFile);
-			} catch (IOException e) {
-				// Something went wrong!
-				System.out.println("Error loading " + fileName);
-				System.out.println(e.toString());
-			}
+		public NormalImage(BufferedImage image) {
+			this.image = image;
 		}
 
 		/**
@@ -354,12 +320,12 @@ public class ChessPanel extends JComponent {
 		public void draw(Graphics2D g, int x, int y, int w, int h) {
 			// Draw (we just want to place it somewhere, so AffineTransform has
 			// this method)
-			transformer = AffineTransform.getTranslateInstance(x, y);
-			transformer.setToScale(w / bufferedImage.getWidth(), h
-					/ bufferedImage.getHeight());
+			final AffineTransform transformer = AffineTransform
+					.getTranslateInstance(x, y);
+			transformer.setToScale(w / image.getWidth(), h / image.getHeight());
 
-			g.drawImage(bufferedImage, x, y, x + w, y + h, 0, 0,
-					bufferedImage.getWidth(), bufferedImage.getHeight(), null);
+			g.drawImage(image, x, y, x + w, y + h, 0, 0, image.getWidth(),
+					image.getHeight(), null);
 		}
 	}
 

@@ -1,5 +1,15 @@
 package at.jku.chess.saksanturilas.ui;
 
+import static at.jku.chess.saksanturilas.ui.ResourceManager.CHOICE;
+import static at.jku.chess.saksanturilas.ui.ResourceManager.DOWN;
+import static at.jku.chess.saksanturilas.ui.ResourceManager.ICON;
+import static at.jku.chess.saksanturilas.ui.ResourceManager.QUIT;
+import static at.jku.chess.saksanturilas.ui.ResourceManager.START;
+import static at.jku.chess.saksanturilas.ui.ResourceManager.UNDO;
+import static at.jku.chess.saksanturilas.ui.ResourceManager.UP;
+import static at.jku.chess.saksanturilas.ui.ResourceManager.getIcon;
+import static at.jku.chess.saksanturilas.ui.ResourceManager.getImage;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -10,17 +20,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 
-import javax.imageio.ImageIO;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.DefaultListCellRenderer;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -57,7 +63,6 @@ import at.jku.chess.saksanturilas.player.AbstractPlayer;
  * 
  */
 public class SwingUI extends GameUI {
-	public static final String IMGDIR = "sprites/";
 	private static final int SIDEBAR_MIN_WIDTH = 200;
 	private static final int SIDEBAR_MIN_HEIGHT = 100;
 	private static final Font MONO_FONT = new Font(Font.MONOSPACED, Font.PLAIN, 12);
@@ -127,11 +132,11 @@ public class SwingUI extends GameUI {
 				flipButton.setSelected(flipMenu.isSelected());
 
 			if (chessPanel.flipAppearance()) {
-				flipMenu.setIcon(new ImageIcon(IMGDIR + "down.png"));
-				flipButton.setIcon(new ImageIcon(IMGDIR + "down.png"));
+				flipMenu.setIcon(getIcon(DOWN));
+				flipButton.setIcon(getIcon(DOWN));
 			} else {
-				flipMenu.setIcon(new ImageIcon(IMGDIR + "up.png"));
-				flipButton.setIcon(new ImageIcon(IMGDIR + "up.png"));
+				flipMenu.setIcon(getIcon(UP));
+				flipButton.setIcon(getIcon(UP));
 			}
 			chessPanel.repaint();
 		}
@@ -183,8 +188,7 @@ public class SwingUI extends GameUI {
 
 		int selection = JOptionPane.showOptionDialog(frame,
 				"Choose the player for White", "Choose player", 0,
-				JOptionPane.QUESTION_MESSAGE, new ImageIcon(
-						IMGDIR + "choice.png"), options, options[0]);
+				JOptionPane.QUESTION_MESSAGE, getIcon(CHOICE), options, options[0]);
 
 		if (selection < 0)
 			return false;
@@ -202,8 +206,7 @@ public class SwingUI extends GameUI {
 
 		selection = JOptionPane.showOptionDialog(frame,
 				"Choose the player for Black", "Choose player", 0,
-				JOptionPane.QUESTION_MESSAGE, new ImageIcon(
-						IMGDIR + "choice.png"), options, options[0]);
+				JOptionPane.QUESTION_MESSAGE, getIcon(CHOICE), options, options[0]);
 
 		if (selection < 0)
 			return false;
@@ -318,8 +321,7 @@ public class SwingUI extends GameUI {
 			final String[] options = { "Bishop", "Knight", "Queen", "Rook" };
 			int response = JOptionPane.showOptionDialog(frame,
 					"Which figure would you like to change your pawn into?",
-					"Choose figure", 0, JOptionPane.QUESTION_MESSAGE,
-					new ImageIcon(IMGDIR + "choice.png"), options, options[0]);
+					"Choose figure", 0, JOptionPane.QUESTION_MESSAGE, getIcon(CHOICE), options, options[0]);
 			assert (response >= 0);
 			doMove(m.get(response));
 		}
@@ -339,12 +341,7 @@ public class SwingUI extends GameUI {
 
 		frame = new JFrame("Saksanturilas 1.0.1.0.1.0 ALPHA");
 		{
-			File imageFile = new File(IMGDIR + "icon.png");
-			try {
-				frame.setIconImage(ImageIO.read(imageFile));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			frame.setIconImage(getImage(ICON));
 			frame.setLayout(new BorderLayout());
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.setSize(650, 500);
@@ -366,7 +363,7 @@ public class SwingUI extends GameUI {
 			JMenu fileM = new JMenu("File");
 			{
 				x = new JMenuItem(restartAction);
-				x.setIcon(new ImageIcon(IMGDIR + "start.png"));
+				x.setIcon(getIcon(START));
 				x.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N,
 						ActionEvent.CTRL_MASK));
 				fileM.add(x);
@@ -374,7 +371,7 @@ public class SwingUI extends GameUI {
 				fileM.addSeparator();
 
 				x = new JMenuItem(exitAction);
-				x.setIcon(new ImageIcon(IMGDIR + "quit.png"));
+				x.setIcon(getIcon(QUIT));
 				x.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q,
 						ActionEvent.CTRL_MASK));
 				fileM.add(x);
@@ -385,7 +382,7 @@ public class SwingUI extends GameUI {
 			JMenu editM = new JMenu("Edit");
 			{
 				undoMenu = new JMenuItem(undoAction);
-				undoMenu.setIcon(new ImageIcon(IMGDIR + "undo.png"));
+				undoMenu.setIcon(getIcon(UNDO));
 				undoMenu.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z,
 						ActionEvent.CTRL_MASK));
 				undoMenu.setEnabled(false);
@@ -394,7 +391,7 @@ public class SwingUI extends GameUI {
 				editM.addSeparator();
 				
 				flipMenu = new JMenuItem(flipAppearanceAction);
-				flipMenu.setIcon(new ImageIcon(IMGDIR + "down.png"));
+				flipMenu.setIcon(getIcon(DOWN));
 				flipMenu.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F,
 						ActionEvent.CTRL_MASK));
 				editM.add(flipMenu);
@@ -412,12 +409,12 @@ public class SwingUI extends GameUI {
 		frame.add(north, BorderLayout.NORTH);
 		JToolBar jtb = new JToolBar("File");
 		{
-			JButton b = new JButton(new ImageIcon(IMGDIR + "start.png"));
+			JButton b = new JButton(getIcon(START));
 			b.setToolTipText("Start new game");
 			b.addActionListener(restartAction);
 			jtb.add(b);
 
-			b = new JButton(new ImageIcon(IMGDIR + "quit.png"));
+			b = new JButton(getIcon(QUIT));
 			b.setToolTipText("Quit program");
 			b.addActionListener(exitAction);
 			jtb.add(b);
@@ -427,13 +424,13 @@ public class SwingUI extends GameUI {
 
 		jtb = new JToolBar("Edit");
 		{
-			undoToolButton = new JButton(new ImageIcon(IMGDIR + "undo.png"));
+			undoToolButton = new JButton(getIcon(UNDO));
 			undoToolButton.setToolTipText("Undo last move");
 			undoToolButton.addActionListener(undoAction);
 			undoToolButton.setEnabled(false);
 			jtb.add(undoToolButton);
 
-			flipButton = new JButton(new ImageIcon(IMGDIR + "down.png"));
+			flipButton = new JButton(getIcon(DOWN));
 			flipButton.setToolTipText("Flip appearance");
 			flipButton.addActionListener(flipAppearanceAction);
 			jtb.add(flipButton);
